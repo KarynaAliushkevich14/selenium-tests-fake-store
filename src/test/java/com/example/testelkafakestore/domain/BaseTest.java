@@ -1,4 +1,4 @@
-package com.example.testelkafakestore.testelkaStoreDomain;
+package com.example.testelkafakestore.domain;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,12 +10,16 @@ import org.springframework.boot.test.context.*;
 @SpringBootTest
 public abstract class BaseTest {
 
+    private final WebDriver localWebDriver;
+
     @Autowired
-    private WebDriver localDriver;
+    public BaseTest (WebDriver localWebdriver) {
+        this.localWebDriver = localWebdriver;
+    }
 
     @BeforeEach
     public void setUp() {
-        localDriver.manage().window().maximize();
+        localWebDriver.manage().window().maximize();
         System.out.println("Выполнился setUp");
     }
 

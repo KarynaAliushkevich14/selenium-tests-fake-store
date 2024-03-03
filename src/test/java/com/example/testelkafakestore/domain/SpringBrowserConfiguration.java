@@ -1,4 +1,4 @@
-package com.example.testelkafakestore.testelkaStoreDomain;
+package com.example.testelkafakestore.domain;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,7 +20,7 @@ public class SpringBrowserConfiguration {
     Environment environment;
 
     @Bean
-    public WebDriver localDriver (){
+    public WebDriver localWebDriver (){
         System.out.println("Browser type: ");
         if (environment.getProperty("browser").equalsIgnoreCase("chrome")) {
         System.setProperty("webdriver.chrome.driver","src\\test\\java\\com\\example\\testelkafakestore\\driversExe\\chromedriver-win64\\chromedriver.exe");
@@ -36,9 +36,5 @@ public class SpringBrowserConfiguration {
     public WebDriverWait webDriverWait(WebDriver webDriver) {
         return new WebDriverWait(webDriver, Duration.ofSeconds(10));
     }
-
-    // initialize Pages
-
-
 }
 
