@@ -1,25 +1,25 @@
 package com.example.testelkafakestore.tests;
 
 import com.example.testelkafakestore.domain.BaseTest;
-import com.example.testelkafakestore.pages.BasePage;
-import com.example.testelkafakestore.pages.MainPage;
+import com.example.testelkafakestore.pages.ShopMainPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class OrderTest extends BaseTest {
 
-    private final BasePage basePage;
+    private final ShopMainPage shopMainPage;
 
     @Autowired // обязательно поставь Autowired потому что программа не встшыкнет localWebDriver, MainPage
-    public OrderTest (WebDriver localWebDriver, MainPage mainPage) {
+    public OrderTest (WebDriver localWebDriver, ShopMainPage shopMainPage) {
         super(localWebDriver);
-        this.basePage = mainPage;
+        this.shopMainPage = shopMainPage;
     }
 
     @Test
     public void orderTest() {
-        basePage.navigateTo("https://fakestore.testelka.pl/");
-        System.out.println("Выполнился orderTest");
+        shopMainPage.navigateTo("https://skleptest.pl/");
+        shopMainPage.redirectToMostWantedPage()
+                .someMethodInMostWantedPage();
     }
 }
