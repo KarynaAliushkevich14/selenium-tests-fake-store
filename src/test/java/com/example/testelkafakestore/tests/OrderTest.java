@@ -21,5 +21,8 @@ public class OrderTest extends BaseTest {
         shopMainPage.navigateTo("https://skleptest.pl/");
         shopMainPage.redirectToMostWantedPage()
                 .someMethodInMostWantedPage();
+        shopMainPage.redirectToCategoriesPage()
+                .redirectToJeansCategoryPage()
+                .methodFromJeansPage();
     }
 }

@@ -1,11 +1,11 @@
 package com.example.testelkafakestore.pages;
 
 import com.example.testelkafakestore.interfaces.BasePage;
-import com.example.testelkafakestore.interfaces.CategoriesPage;
+import org.springframework.stereotype.Component;
 
-public class ScarfsCategoryPage implements BasePage, CategoriesPage {
+@Component
+public class ScarfsCategoryPage implements BasePage {
     @Override
     public void navigateTo(String baseUrl) {
-
     }
 }
