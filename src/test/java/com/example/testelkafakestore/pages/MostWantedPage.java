@@ -12,16 +12,14 @@ public class MostWantedPage implements BasePage {
     // fields
     private final WebDriver localDriver;
     private final WebDriverWait webDriverWait;
+    public final String url = "/product-category/most-wanted/";
 
     // constructor
     @Autowired
     public MostWantedPage (WebDriver localDriver, WebDriverWait webDriverWait) {
         this.localDriver = localDriver;
         this.webDriverWait = webDriverWait;
-    }
 
-    public void navigateTo (String baseUrl) {
-        localDriver.get(baseUrl);
     }
 
     public void someMethodInMostWantedPage () {

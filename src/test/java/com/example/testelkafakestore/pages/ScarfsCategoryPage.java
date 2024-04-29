@@ -5,7 +5,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ScarfsCategoryPage implements BasePage {
-    @Override
-    public void navigateTo(String baseUrl) {
-    }
+
 }

@@ -1,10 +1,11 @@
 package com.example.testelkafakestore.pages;
 
+import com.example.testelkafakestore.interfaces.BasePage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CategoriesPage {
+public class CategoriesPage implements BasePage {
 
     // fields
     private final AllCategoriesPage allCategoriesPage;
@@ -12,6 +13,7 @@ public class CategoriesPage {
     private final ShirtsCategoryPage shirtsCategoryPage;
     private final ScarfsCategoryPage scarfsCategoryPage;
     private final TrendsCategoryPage trendsCategoryPage;
+    public final String url = "/product-category/most-wanted/";
 
     // constructor
     @Autowired

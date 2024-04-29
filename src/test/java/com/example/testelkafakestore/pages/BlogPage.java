@@ -5,8 +5,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BlogPage implements BasePage{
-    @Override
-    public void navigateTo(String baseUrl) {
+    public final String url = "/product-category/most-wanted/";
 
-    }
 }

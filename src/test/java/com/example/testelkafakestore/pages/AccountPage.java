@@ -5,8 +5,4 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AccountPage implements BasePage {
-    @Override
-    public void navigateTo(String baseUrl) {
-
-    }
 }
