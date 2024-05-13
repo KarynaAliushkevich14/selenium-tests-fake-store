@@ -1,6 +1,8 @@
 package com.example.testelkafakestore.pages;
 
+import com.example.testelkafakestore.enums.CategoryPageEnum;
 import com.example.testelkafakestore.interfaces.BasePage;
+import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,17 +10,19 @@ import org.springframework.stereotype.Component;
 public class CategoriesPage implements BasePage {
 
     // fields
+    private final WebDriver localWebDriver;
     private final AllCategoriesPage allCategoriesPage;
     private final JeansCategoryPage jeansCategoryPage;
     private final ShirtsCategoryPage shirtsCategoryPage;
     private final ScarfsCategoryPage scarfsCategoryPage;
     private final TrendsCategoryPage trendsCategoryPage;
-    public final String url = "/product-category/most-wanted/";
+    public final String categoriesPageUrl = "/product-category/most-wanted/";
 
     // constructor
     @Autowired
-    public CategoriesPage (AllCategoriesPage allCategoriesPage, JeansCategoryPage jeansCategoryPage, ShirtsCategoryPage shirtsCategoryPage,
-                           ScarfsCategoryPage scarfsCategoryPage, TrendsCategoryPage trendsCategoryPage) {
+    public CategoriesPage(WebDriver localWebDriver, AllCategoriesPage allCategoriesPage, JeansCategoryPage jeansCategoryPage, ShirtsCategoryPage shirtsCategoryPage,
+                          ScarfsCategoryPage scarfsCategoryPage, TrendsCategoryPage trendsCategoryPage) {
+        this.localWebDriver = localWebDriver;
         this.allCategoriesPage = allCategoriesPage;
         this.jeansCategoryPage = jeansCategoryPage;
         this.shirtsCategoryPage = shirtsCategoryPage;
@@ -27,19 +31,16 @@ public class CategoriesPage implements BasePage {
     }
 
     // methods
-    public AllCategoriesPage redirectToAllCategoriesPage(){
-        return allCategoriesPage;
+    public void navigateTo (String baseUrl) {
+        localWebDriver.get(baseUrl);
     }
-    public JeansCategoryPage redirectToJeansCategoryPage(){
-        return jeansCategoryPage;
-    }
-    public ShirtsCategoryPage redirectToShirtCategoryPage(){
-        return shirtsCategoryPage;
-    }
-    public ScarfsCategoryPage redirectToScarfCategoryPage(){
-        return scarfsCategoryPage;
-    }
-    public TrendsCategoryPage redirectToTrendsCategoryPage(){
-        return trendsCategoryPage;
+
+    public BasePage redirectToCategory (CategoryPageEnum page, String baseUrl) {
+        switch (page) {
+            case ALL_CATEGORIES_PAGE:
+                navigateTo(baseUrl + allCategoriesPage.url);
+                return allCategoriesPage;
+            default: return null; // change to exception
+        }
     }
 }

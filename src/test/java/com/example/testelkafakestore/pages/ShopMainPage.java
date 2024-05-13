@@ -1,6 +1,6 @@
 package com.example.testelkafakestore.pages;
 
-import com.example.testelkafakestore.enums.StorePage;
+import com.example.testelkafakestore.enums.StorePageEnum;
 import com.example.testelkafakestore.interfaces.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -38,13 +38,13 @@ public class ShopMainPage implements BasePage {
         localWEbDriver.get(baseUrl);
     }
 
-    public BasePage redirectToChosenPage (StorePage page, String baseUrl) {
+    public BasePage redirectToChosenPage (StorePageEnum page, String baseUrl) {
         switch (page) {
-            case MostWantedPage:
+            case Most_Wanted_Page:
                 navigateTo(baseUrl + mostWantedPage.url);
                 return mostWantedPage;
             case CategoriesPage:
-                navigateTo(baseUrl + categoriesPage.url);
+                navigateTo(baseUrl + categoriesPage.categoriesPageUrl);
                 return categoriesPage;
             case AboutUsPage:
                 navigateTo(baseUrl + aboutUsPage.url);
