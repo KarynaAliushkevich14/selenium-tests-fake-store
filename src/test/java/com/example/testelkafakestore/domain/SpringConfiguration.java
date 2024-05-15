@@ -49,6 +49,5 @@ public class SpringConfiguration {
         return (JavascriptExecutor) webDriver;
     }
 
-
 }
 

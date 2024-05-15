@@ -1,31 +1,32 @@
 package com.example.testelkafakestore.pages;
 
+import com.example.testelkafakestore.domain.BrowserActions;
+import com.example.testelkafakestore.domain.DriverManager;
 import com.example.testelkafakestore.enums.StorePageEnum;
-import com.example.testelkafakestore.interfaces.BasePage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.example.testelkafakestore.domain.BasePage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ShopMainPage implements BasePage {
+public class ShopMainPage extends BasePage {
 
-    private final WebDriver localWEbDriver;
-    private final WebDriverWait webDriverWait;
+    private final DriverManager driverManager;
+    private final BrowserActions browserActions;
     private final MostWantedPage mostWantedPage;
     private final CategoriesPage categoriesPage;
     private final AboutUsPage aboutUsPage;
     private final ContactPage contactPage;
     private final BlogPage blogPage;
 
-    /**
-     * Main Page in store with dependencies to
-     */
+    private final String uri = "";
+
     @Autowired
-    public ShopMainPage(WebDriver localWEbDriver, WebDriverWait webDriverWait, MostWantedPage mostWantedPage,
+    public ShopMainPage(DriverManager driverManager, BrowserActions browserActions, MostWantedPage mostWantedPage,
                         CategoriesPage categoriesPage, AboutUsPage aboutUsPage, ContactPage contactPage, BlogPage blogPage) {
-        this.webDriverWait = webDriverWait;
-        this.localWEbDriver = localWEbDriver;
+        super(driverManager, browserActions);
+        this.driverManager = driverManager;
+        this.browserActions = browserActions;
+
         this.mostWantedPage = mostWantedPage;
         this.categoriesPage = categoriesPage;
         this.aboutUsPage = aboutUsPage;
@@ -34,26 +35,27 @@ public class ShopMainPage implements BasePage {
     }
 
     // methods
-    public void navigateTo (String baseUrl) {
-        localWEbDriver.get(baseUrl);
+    public BasePage goToUrl(String uri) {
+        browserActions.goToUrl(uri);
+        return this;
     }
 
-    public BasePage redirectToChosenPage (StorePageEnum page, String baseUrl) {
+    public BasePage redirectToChosenPage (StorePageEnum page) {
         switch (page) {
             case Most_Wanted_Page:
-                navigateTo(baseUrl + mostWantedPage.url);
+                goToUrl(mostWantedPage.uri);
                 return mostWantedPage;
             case CategoriesPage:
-                navigateTo(baseUrl + categoriesPage.categoriesPageUrl);
+                goToUrl( categoriesPage.categoriesPageUri);
                 return categoriesPage;
             case AboutUsPage:
-                navigateTo(baseUrl + aboutUsPage.url);
+                goToUrl(aboutUsPage.uri);
                 return aboutUsPage;
             case ContactPage:
-                navigateTo(baseUrl + contactPage.url);
+                goToUrl(contactPage.uri);
                 return contactPage;
             case BlogPage:
-                navigateTo(baseUrl + blogPage.url);
+                goToUrl(blogPage.uri);
                 return blogPage;
             default:
                 return null; // change to exception

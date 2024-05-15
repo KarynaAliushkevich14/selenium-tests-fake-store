@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.*;
 public abstract class BaseTest {
 
     private final DriverManager driverManager;
+    private String baseUrl = "https://skleptest.pl/";
 
     @Autowired
     public BaseTest(DriverManager driverManager) {
@@ -20,8 +21,7 @@ public abstract class BaseTest {
     public void setUp() {
         driverManager.localWebDriver.manage().window().maximize();
         System.out.println("SetUp successfully executed");
-
-
+        // initialization of BasePage and all Pages which extend IShirtPage, where ShirtPage implement IShirtPage and extend BasePage?
 
         /** Java
          * 1. Application context: registration of Beans and placement in container

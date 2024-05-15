@@ -21,9 +21,9 @@ public class OrderTest extends BaseTest {
 
     @Test
     public void orderTest() {
-        shopMainPage.navigateTo(Constants.BASE_URL);
+        shopMainPage.goToUrl(Constants.BASE_URL); // нужно чтобы эта страница открывалась в SetUpie
         shopMainPage
-                .redirectToChosenPage(StorePageEnum.CategoriesPage, Constants.BASE_URL);
+                .redirectToChosenPage(StorePageEnum.CategoriesPage);
         //driverManager.localWebDriver.
     }
 }

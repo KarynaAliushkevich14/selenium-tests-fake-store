@@ -1,28 +1,36 @@
 package com.example.testelkafakestore.pages;
 
+import com.example.testelkafakestore.domain.BrowserActions;
+import com.example.testelkafakestore.domain.DriverManager;
 import com.example.testelkafakestore.enums.CategoryPageEnum;
-import com.example.testelkafakestore.interfaces.BasePage;
+import com.example.testelkafakestore.domain.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CategoriesPage implements BasePage {
+public class CategoriesPage extends BasePage {
 
     // fields
-    private final WebDriver localWebDriver;
+    private final DriverManager driverManager;
+    private final BrowserActions browserActions;
     private final AllCategoriesPage allCategoriesPage;
     private final JeansCategoryPage jeansCategoryPage;
     private final ShirtsCategoryPage shirtsCategoryPage;
     private final ScarfsCategoryPage scarfsCategoryPage;
     private final TrendsCategoryPage trendsCategoryPage;
-    public final String categoriesPageUrl = "/product-category/most-wanted/";
+
+    public final String categoriesPageUri = "product-category/most-wanted/";
 
     // constructor
     @Autowired
-    public CategoriesPage(WebDriver localWebDriver, AllCategoriesPage allCategoriesPage, JeansCategoryPage jeansCategoryPage, ShirtsCategoryPage shirtsCategoryPage,
+    public CategoriesPage(DriverManager driverManager, BrowserActions browserActions, WebDriver localWebDriver,
+                          AllCategoriesPage allCategoriesPage, JeansCategoryPage jeansCategoryPage, ShirtsCategoryPage shirtsCategoryPage,
                           ScarfsCategoryPage scarfsCategoryPage, TrendsCategoryPage trendsCategoryPage) {
-        this.localWebDriver = localWebDriver;
+        super(driverManager, browserActions);
+        this.driverManager = driverManager;
+        this.browserActions = browserActions;
+
         this.allCategoriesPage = allCategoriesPage;
         this.jeansCategoryPage = jeansCategoryPage;
         this.shirtsCategoryPage = shirtsCategoryPage;
@@ -30,17 +38,32 @@ public class CategoriesPage implements BasePage {
         this.trendsCategoryPage = trendsCategoryPage;
     }
 
+
     // methods
-    public void navigateTo (String baseUrl) {
-        localWebDriver.get(baseUrl);
+    public BasePage goToUrl(String uri) {
+        browserActions.goToUrl(uri);
+        return this;
     }
 
     public BasePage redirectToCategory (CategoryPageEnum page, String baseUrl) {
         switch (page) {
             case ALL_CATEGORIES_PAGE:
-                navigateTo(baseUrl + allCategoriesPage.url);
+                goToUrl(allCategoriesPage.uri) ;
                 return allCategoriesPage;
-            default: return null; // change to exception
+            case JEANS_CATEGORIES_PAGE:
+                goToUrl(jeansCategoryPage.uri);
+                return jeansCategoryPage;
+            case SHIRT_CATEGORIES_PAGE:
+                goToUrl(shirtsCategoryPage.uri);
+                return shirtsCategoryPage;
+            case SCARF_CATEGORIES_PAGE:
+                goToUrl(scarfsCategoryPage.uri);
+                return scarfsCategoryPage;
+            case TRENDS_CATEGORIES_PAGE:
+                goToUrl(trendsCategoryPage.uri);
+                return trendsCategoryPage;
+            default:
+                return null; // change to exception
         }
     }
 }

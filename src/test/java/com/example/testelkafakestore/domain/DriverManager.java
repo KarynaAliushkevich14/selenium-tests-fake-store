@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 public class DriverManager {
 
     // May be we could add [ThreadStatic]
-    public WebDriver localWebDriver;
-    public WebDriverWait webDriverWait;
-    public Actions action;
-    public JavascriptExecutor javascriptExecutor;
+    public final WebDriver localWebDriver;
+    public final WebDriverWait webDriverWait;
+    public final Actions action;
+    public final JavascriptExecutor javascriptExecutor;
 
     @Autowired
     public DriverManager(WebDriver localWebDriver, WebDriverWait webDriverWait, Actions action, JavascriptExecutor javascriptExecutor) {

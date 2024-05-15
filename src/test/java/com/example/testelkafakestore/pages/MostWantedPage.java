@@ -1,25 +1,18 @@
 package com.example.testelkafakestore.pages;
 
-import com.example.testelkafakestore.interfaces.BasePage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.testelkafakestore.domain.BrowserActions;
+import com.example.testelkafakestore.domain.DriverManager;
+import com.example.testelkafakestore.domain.BasePage;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MostWantedPage implements BasePage {
+public class MostWantedPage extends BasePage {
 
     // fields
-    private final WebDriver localDriver;
-    private final WebDriverWait webDriverWait;
-    public final String url = "/product-category/most-wanted/";
+    public final String uri = "/product-category/most-wanted/";
 
-    // constructor
-    @Autowired
-    public MostWantedPage (WebDriver localDriver, WebDriverWait webDriverWait) {
-        this.localDriver = localDriver;
-        this.webDriverWait = webDriverWait;
-
+    protected MostWantedPage(DriverManager driverManager, BrowserActions browserActions) {
+        super(driverManager, browserActions);
     }
 
     public void someMethodInMostWantedPage () {
