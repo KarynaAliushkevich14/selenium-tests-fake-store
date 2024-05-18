@@ -18,9 +18,4 @@ public class ScarfsCategoryPage extends BasePage {
         this.driverManager = driverManager;
         this.browserActions = browserActions;
     }
-
-    @Override
-    protected void navigateToPageUrl() {
-        browserActions.goToUrl(uri);
-    }
 }

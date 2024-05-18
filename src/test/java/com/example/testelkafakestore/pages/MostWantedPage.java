@@ -21,11 +21,6 @@ public class MostWantedPage extends BasePage {
         this.browserActions = browserActions;
     }
 
-    @Override
-    protected void navigateToPageUrl() {
-        browserActions.goToUrl(uri);
-    }
-
     public void someMethodInMostWantedPage () {
         System.out.println("MostWantedPage");
     }

@@ -19,7 +19,6 @@ public class BrowserActions {
         this.baseUrl = Constants.BASE_URL;
     }
 
-    // methods
     public BrowserActions goToUrl(String uri) {
         webDriver.navigate().refresh();
         String url = baseUrl + uri;

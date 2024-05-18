@@ -19,10 +19,6 @@ public class ShirtsCategoryPage extends BasePage {
         this.browserActions = browserActions;
     }
 
-    @Override
-    protected void navigateToPageUrl() {
-        browserActions.goToUrl(uri);
-    }
     public void MethodFromShirtCategoryPage () {
         System.out.println("Method from shirt category page");
     }

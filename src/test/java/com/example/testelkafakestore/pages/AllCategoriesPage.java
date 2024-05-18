@@ -19,8 +19,4 @@ public class AllCategoriesPage extends BasePage {
         this.browserActions = browserActions;
     }
 
-    @Override
-    protected void navigateToPageUrl() {
-        browserActions.goToUrl(uri);
-    }
 }

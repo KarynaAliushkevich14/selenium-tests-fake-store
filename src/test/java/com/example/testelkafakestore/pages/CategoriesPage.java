@@ -19,7 +19,7 @@ public class CategoriesPage extends BasePage {
     private final ScarfsCategoryPage scarfsCategoryPage;
     private final TrendsCategoryPage trendsCategoryPage;
 
-    public final String uri = "product-category/most-wanted/";
+    public final String uri = "";
 
     // constructor
     @Autowired
@@ -37,10 +37,10 @@ public class CategoriesPage extends BasePage {
         this.trendsCategoryPage = trendsCategoryPage;
     }
 
-    @Override
-    protected void navigateToPageUrl() {
-        browserActions.goToUrl(uri);
-    }
+//    @Override
+//    protected void navigateToCurrentPageUrl() {
+//        browserActions.goToUrl(uri);
+//    }
 
     public AllCategoriesPage goToAllCategoriesPage() {
         browserActions

@@ -18,12 +18,4 @@ public class JeansCategoryPage extends BasePage {
         this.driverManager = driverManager;
         this.browserActions = browserActions;
     }
-
-    @Override
-    protected void navigateToPageUrl() {
-        browserActions.goToUrl(uri);
-    }
-    public void methodFromJeansPage () {
-        System.out.println("Method From Jeans Page");
-    }
 }

@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.*;
 public abstract class BaseTest {
 
     private final DriverManager driverManager;
-    private String baseUrl = "https://skleptest.pl/";
 
     @Autowired
     public BaseTest(DriverManager driverManager) {

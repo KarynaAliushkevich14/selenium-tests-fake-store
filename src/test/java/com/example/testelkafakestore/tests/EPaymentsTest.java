@@ -14,16 +14,16 @@ public class EPaymentsTest extends BaseTest {
     public EPaymentsTest(DriverManager driverManager, ShopMainPage shopMainPage) {
         super(driverManager);
         this.driverManager = driverManager;
+
         this.shopMainPage = shopMainPage;
     }
 
     @Test
     public void selectProductAndPayForIt_success() {
-        shopMainPage.navigateToPageUrl();
         shopMainPage
+                .goToCurrentPage()
                 .goToCategoriesPage()
                 .goToJeansCategoryPage();
-
 
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class ShoppingCartPage extends BasePage {
     private final DriverManager driverManager;
     private final BrowserActions browserActions;
+    private final String uri = "cart/";
 
     protected ShoppingCartPage(DriverManager driverManager, BrowserActions browserActions) {
         super(driverManager, browserActions);
@@ -16,8 +17,5 @@ public class ShoppingCartPage extends BasePage {
         this.driverManager = driverManager;
         this.browserActions = browserActions;
     }
-    @Override
-    protected void navigateToPageUrl() {
-        browserActions.goToUrl(uri);
-    }
+
 }

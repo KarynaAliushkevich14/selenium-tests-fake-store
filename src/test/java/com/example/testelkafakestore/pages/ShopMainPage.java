@@ -2,7 +2,6 @@ package com.example.testelkafakestore.pages;
 
 import com.example.testelkafakestore.domain.BrowserActions;
 import com.example.testelkafakestore.domain.DriverManager;
-import com.example.testelkafakestore.enums.StorePageEnum;
 import com.example.testelkafakestore.domain.BasePage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,34 +33,33 @@ public class ShopMainPage extends BasePage {
         this.blogPage = blogPage;
     }
 
-    @Override
-    public void navigateToPageUrl() {
-        browserActions.goToUrl(uri);
+    public ShopMainPage goToCurrentPage() {
+        navigateToPageUrl(uri);
+        return this;
     }
 
     public MostWantedPage goToMostWantedPage() {
-        browserActions
-                .goToUrl(mostWantedPage.uri);
+        navigateToPageUrl(categoriesPage.uri);
         return mostWantedPage;
     }
+
     public CategoriesPage goToCategoriesPage() {
-        browserActions
-                .goToUrl(categoriesPage.uri);
+        navigateToPageUrl(categoriesPage.uri);
         return categoriesPage;
     }
+
     public AboutUsPage goToAboutUsPage() {
-        browserActions
-                .goToUrl(aboutUsPage.uri);
+        navigateToPageUrl(categoriesPage.uri);
         return aboutUsPage;
     }
+
     public ContactPage goToContactPage() {
-        browserActions
-                .goToUrl(contactPage.uri);
+        navigateToPageUrl(categoriesPage.uri);
         return contactPage;
     }
+
     public BlogPage goToBlogPage() {
-        browserActions
-                .goToUrl(blogPage.uri);
+        navigateToPageUrl(categoriesPage.uri);
         return blogPage;
     }
 }
