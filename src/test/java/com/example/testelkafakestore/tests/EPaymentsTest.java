@@ -23,7 +23,8 @@ public class EPaymentsTest extends BaseTest {
         shopMainPage
                 .goToCurrentPage()
                 .goToCategoriesPage()
-                .goToJeansCategoryPage();
+                .goToJeansCategoryPage()
+                .addProductWithPositivePriceToCart();
 
     }
 }

@@ -42,5 +42,6 @@ public abstract class BaseTest {
 
     @AfterEach
     public void tearDown() {
+        driverManager.localWebDriver.quit();
     }
 }

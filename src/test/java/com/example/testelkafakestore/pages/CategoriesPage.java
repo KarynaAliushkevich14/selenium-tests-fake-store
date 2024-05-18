@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class CategoriesPage extends BasePage {
 
-    // fields
     private final DriverManager driverManager;
     private final BrowserActions browserActions;
     private final AllCategoriesPage allCategoriesPage;
@@ -21,7 +20,6 @@ public class CategoriesPage extends BasePage {
 
     public final String uri = "";
 
-    // constructor
     @Autowired
     public CategoriesPage(DriverManager driverManager, BrowserActions browserActions, WebDriver localWebDriver,
                           AllCategoriesPage allCategoriesPage, JeansCategoryPage jeansCategoryPage, ShirtsCategoryPage shirtsCategoryPage,
@@ -36,11 +34,6 @@ public class CategoriesPage extends BasePage {
         this.scarfsCategoryPage = scarfsCategoryPage;
         this.trendsCategoryPage = trendsCategoryPage;
     }
-
-//    @Override
-//    protected void navigateToCurrentPageUrl() {
-//        browserActions.goToUrl(uri);
-//    }
 
     public AllCategoriesPage goToAllCategoriesPage() {
         browserActions
