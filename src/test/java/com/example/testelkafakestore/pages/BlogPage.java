@@ -7,9 +7,20 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BlogPage extends BasePage {
+    private final DriverManager driverManager;
+    private final BrowserActions browserActions;
+
     public final String uri = "/product-category/most-wanted/";
 
     protected BlogPage(DriverManager driverManager, BrowserActions browserActions) {
         super(driverManager, browserActions);
+
+        this.driverManager = driverManager;
+        this.browserActions = browserActions;
+    }
+
+    @Override
+    protected void navigateToPageUrl() {
+        browserActions.goToUrl(uri);
     }
 }

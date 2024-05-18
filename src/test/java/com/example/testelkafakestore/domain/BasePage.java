@@ -11,4 +11,6 @@ public abstract class BasePage {
         this.driverManager = driverManager;
         this.browserActions = browserActions;
     }
+
+    protected abstract void navigateToPageUrl();
 }

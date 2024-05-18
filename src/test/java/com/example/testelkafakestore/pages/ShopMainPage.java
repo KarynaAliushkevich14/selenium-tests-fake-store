@@ -34,31 +34,34 @@ public class ShopMainPage extends BasePage {
         this.blogPage = blogPage;
     }
 
-    // methods
-    public BasePage goToUrl(String uri) {
+    @Override
+    public void navigateToPageUrl() {
         browserActions.goToUrl(uri);
-        return this;
     }
 
-    public BasePage redirectToChosenPage (StorePageEnum page) {
-        switch (page) {
-            case Most_Wanted_Page:
-                goToUrl(mostWantedPage.uri);
-                return mostWantedPage;
-            case CategoriesPage:
-                goToUrl( categoriesPage.categoriesPageUri);
-                return categoriesPage;
-            case AboutUsPage:
-                goToUrl(aboutUsPage.uri);
-                return aboutUsPage;
-            case ContactPage:
-                goToUrl(contactPage.uri);
-                return contactPage;
-            case BlogPage:
-                goToUrl(blogPage.uri);
-                return blogPage;
-            default:
-                return null; // change to exception
-        }
+    public MostWantedPage goToMostWantedPage() {
+        browserActions
+                .goToUrl(mostWantedPage.uri);
+        return mostWantedPage;
+    }
+    public CategoriesPage goToCategoriesPage() {
+        browserActions
+                .goToUrl(categoriesPage.uri);
+        return categoriesPage;
+    }
+    public AboutUsPage goToAboutUsPage() {
+        browserActions
+                .goToUrl(aboutUsPage.uri);
+        return aboutUsPage;
+    }
+    public ContactPage goToContactPage() {
+        browserActions
+                .goToUrl(contactPage.uri);
+        return contactPage;
+    }
+    public BlogPage goToBlogPage() {
+        browserActions
+                .goToUrl(blogPage.uri);
+        return blogPage;
     }
 }

@@ -2,7 +2,6 @@ package com.example.testelkafakestore.pages;
 
 import com.example.testelkafakestore.domain.BrowserActions;
 import com.example.testelkafakestore.domain.DriverManager;
-import com.example.testelkafakestore.enums.CategoryPageEnum;
 import com.example.testelkafakestore.domain.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class CategoriesPage extends BasePage {
     private final ScarfsCategoryPage scarfsCategoryPage;
     private final TrendsCategoryPage trendsCategoryPage;
 
-    public final String categoriesPageUri = "product-category/most-wanted/";
+    public final String uri = "product-category/most-wanted/";
 
     // constructor
     @Autowired
@@ -38,32 +37,34 @@ public class CategoriesPage extends BasePage {
         this.trendsCategoryPage = trendsCategoryPage;
     }
 
-
-    // methods
-    public BasePage goToUrl(String uri) {
+    @Override
+    protected void navigateToPageUrl() {
         browserActions.goToUrl(uri);
-        return this;
     }
 
-    public BasePage redirectToCategory (CategoryPageEnum page, String baseUrl) {
-        switch (page) {
-            case ALL_CATEGORIES_PAGE:
-                goToUrl(allCategoriesPage.uri) ;
-                return allCategoriesPage;
-            case JEANS_CATEGORIES_PAGE:
-                goToUrl(jeansCategoryPage.uri);
-                return jeansCategoryPage;
-            case SHIRT_CATEGORIES_PAGE:
-                goToUrl(shirtsCategoryPage.uri);
-                return shirtsCategoryPage;
-            case SCARF_CATEGORIES_PAGE:
-                goToUrl(scarfsCategoryPage.uri);
-                return scarfsCategoryPage;
-            case TRENDS_CATEGORIES_PAGE:
-                goToUrl(trendsCategoryPage.uri);
-                return trendsCategoryPage;
-            default:
-                return null; // change to exception
-        }
+    public AllCategoriesPage goToAllCategoriesPage() {
+        browserActions
+                .goToUrl(allCategoriesPage.uri);
+        return allCategoriesPage;
+    }
+    public JeansCategoryPage goToJeansCategoryPage() {
+        browserActions
+                .goToUrl(jeansCategoryPage.uri);
+        return jeansCategoryPage;
+    }
+    public ShirtsCategoryPage goToShirtsCategoryPage() {
+        browserActions
+                .goToUrl(shirtsCategoryPage.uri);
+        return shirtsCategoryPage;
+    }
+    public ScarfsCategoryPage goToScarfsCategoryPage() {
+        browserActions
+                .goToUrl(scarfsCategoryPage.uri);
+        return scarfsCategoryPage;
+    }
+    public TrendsCategoryPage goToTrendsCategoryPage() {
+        browserActions
+                .goToUrl(trendsCategoryPage.uri);
+        return trendsCategoryPage;
     }
 }
