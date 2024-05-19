@@ -36,7 +36,7 @@ public class AboutUsPage extends BasePage {
         PageFactory.initElements(driverManager.localWebDriver, pageElements);
     }
 
-    public AboutUsPage fullFillContactForm() {
+    public AboutUsPage fillContactForm() {
         waitUntilAllWebElementsToBeClickable();
 
         pageElements.yourName.sendKeys("Sam");

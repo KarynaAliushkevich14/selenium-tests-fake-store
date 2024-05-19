@@ -5,6 +5,7 @@ import com.example.testelkafakestore.domain.DriverManager;
 import com.example.testelkafakestore.pages.ShopMainPage;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.testng.Assert;
 
 public class EPaymentsTest extends BaseTest {
     private final DriverManager driverManager;
@@ -22,13 +23,17 @@ public class EPaymentsTest extends BaseTest {
     public void selectProductAndPayForIt_success() {
         // arrange
 
-        // act
+        // act & assert
         shopMainPage
                 .goToCurrentPage()
                 .goToCategoriesPage()
                 .goToJeansCategoryPage()
                 .addProductWithPositivePriceToCart();
 
+        var mostWantedPage = shopMainPage.goToMostWantedPage();
+
+        Assert.assertEquals(mostWantedPage.getNumberOfTotalProductsExpected, mostWantedPage.getNumberOfTotalProductsActual());
+        Assert.assertEquals(mostWantedPage.getNumberOfTotalProductsExpected, mostWantedPage.getShowingAllResultField());
 
         // assert
         // that item price == shopping cart price for each product and sum

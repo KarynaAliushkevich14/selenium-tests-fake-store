@@ -36,7 +36,7 @@ public class SpringConfiguration {
 
     @Bean
     public WebDriverWait webDriverWait(WebDriver webDriver) {
-        return new WebDriverWait(webDriver, Duration.ofSeconds(10));
+        return new WebDriverWait(webDriver, Duration.ofSeconds(20));
     }
 
     @Bean

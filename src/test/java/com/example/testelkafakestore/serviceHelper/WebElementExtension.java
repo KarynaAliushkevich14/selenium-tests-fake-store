@@ -34,7 +34,7 @@ public class WebElementExtension {
             WebElement element = driver.webDriverWait.until(ExpectedConditions.elementToBeClickable(webElement)); // wait until element is clickable on a page
             return element;
         } catch (NoSuchElementException | TimeoutException e) {
-            e.getMessage();
+            e.printStackTrace();
         }
         return null;
     }

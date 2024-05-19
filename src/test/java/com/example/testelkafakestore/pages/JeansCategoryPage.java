@@ -42,7 +42,7 @@ public class JeansCategoryPage extends BasePage {
         for (WebElement item : pageElements.listOfItemsOnPage) {
             try {
                 WebElement priceElement = item.findElement(By.xpath(".//span[contains(@class, 'Price-amount')]")); // search for the 'price' element inside of current element
-                Double price = ServiceHelper.parsePrice(priceElement.getText());
+                Double price = ServiceHelper.parseStringToDougle(priceElement.getText());
 
                 if (price > 0) {
                     WebElement addToCartElement = item.findElement(By.xpath(".//a[contains(@class, 'add_to_cart_button')]"));
