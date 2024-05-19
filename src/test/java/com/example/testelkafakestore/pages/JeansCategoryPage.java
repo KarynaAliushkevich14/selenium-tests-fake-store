@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Component
 public class JeansCategoryPage extends BasePage {
@@ -30,18 +31,28 @@ public class JeansCategoryPage extends BasePage {
         this.browserActions = browserActions;
         this.pageElements = new PageElements();
 
-        Init(pageElements);
+        Init();
     }
 
-    public void Init(PageElements elements) {
-        PageFactory.initElements(driverManager.localWebDriver, elements);
+    protected void Init() {
+        PageFactory.initElements(driverManager.localWebDriver, pageElements);
     }
 
     public JeansCategoryPage addProductWithPositivePriceToCart() {
         for (WebElement item : pageElements.listOfItemsOnPage) {
-            WebElement priceElement = item.findElement(By.xpath(".//span[contains(@class, 'Price-amount')]")); // search for the 'price' element inside of current element
-            Double price = ServiceHelper.parsePrice(priceElement.getText());
+            try {
+                WebElement priceElement = item.findElement(By.xpath(".//span[contains(@class, 'Price-amount')]")); // search for the 'price' element inside of current element
+                Double price = ServiceHelper.parsePrice(priceElement.getText());
 
+                if (price > 0) {
+                    WebElement addToCartElement = item.findElement(By.xpath(".//a[contains(@class, 'add_to_cart_button')]"));
+                    addToCartElement.click();
+                    browserActions.refreshPage();
+                    break;
+                }
+            } catch (NoSuchElementException noSuchElementException) {
+                noSuchElementException.getMessage();
+            }
         }
         return this;
     }

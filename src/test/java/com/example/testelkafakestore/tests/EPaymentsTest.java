@@ -20,11 +20,17 @@ public class EPaymentsTest extends BaseTest {
 
     @Test
     public void selectProductAndPayForIt_success() {
+        // arrange
+
+        // act
         shopMainPage
                 .goToCurrentPage()
                 .goToCategoriesPage()
                 .goToJeansCategoryPage()
                 .addProductWithPositivePriceToCart();
 
+
+        // assert
+        // that item price == shopping cart price for each product and sum
     }
 }

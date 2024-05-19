@@ -21,7 +21,7 @@ public abstract class BaseTest {
     public void setUp() {
         driverManager.localWebDriver.manage().window().maximize();
         System.out.println("SetUp successfully executed");
-        // initialization of BasePage and all Pages which extend IShirtPage, where ShirtPage implement IShirtPage and extend BasePage?
+        // Timeout
 
         /** Java
          * 1. Application context: registration of Beans and placement in container

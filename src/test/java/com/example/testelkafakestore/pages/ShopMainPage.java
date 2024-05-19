@@ -14,14 +14,13 @@ public class ShopMainPage extends BasePage {
     private final MostWantedPage mostWantedPage;
     private final CategoriesPage categoriesPage;
     private final AboutUsPage aboutUsPage;
-    private final ContactPage contactPage;
     private final BlogPage blogPage;
 
     private final String uri = "";
 
     @Autowired
     public ShopMainPage(DriverManager driverManager, BrowserActions browserActions, MostWantedPage mostWantedPage,
-                        CategoriesPage categoriesPage, AboutUsPage aboutUsPage, ContactPage contactPage, BlogPage blogPage) {
+                        CategoriesPage categoriesPage, AboutUsPage aboutUsPage, BlogPage blogPage) {
         super(driverManager, browserActions);
         this.driverManager = driverManager;
         this.browserActions = browserActions;
@@ -29,7 +28,6 @@ public class ShopMainPage extends BasePage {
         this.mostWantedPage = mostWantedPage;
         this.categoriesPage = categoriesPage;
         this.aboutUsPage = aboutUsPage;
-        this.contactPage = contactPage;
         this.blogPage = blogPage;
     }
 
@@ -39,7 +37,7 @@ public class ShopMainPage extends BasePage {
     }
 
     public MostWantedPage goToMostWantedPage() {
-        navigateToPageUrl(categoriesPage.uri);
+        navigateToPageUrl(mostWantedPage.uri);
         return mostWantedPage;
     }
 
@@ -49,17 +47,12 @@ public class ShopMainPage extends BasePage {
     }
 
     public AboutUsPage goToAboutUsPage() {
-        navigateToPageUrl(categoriesPage.uri);
+        navigateToPageUrl(aboutUsPage.uri);
         return aboutUsPage;
     }
 
-    public ContactPage goToContactPage() {
-        navigateToPageUrl(categoriesPage.uri);
-        return contactPage;
-    }
-
     public BlogPage goToBlogPage() {
-        navigateToPageUrl(categoriesPage.uri);
+        navigateToPageUrl(blogPage.uri);
         return blogPage;
     }
 }
