@@ -1,6 +1,6 @@
 package com.example.testelkafakestore.domain;
 
-import com.example.testelkafakestore.enums.Constants;
+import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +19,10 @@ public abstract class BaseTest {
 
     @BeforeEach
     public void setUp() {
+
         driverManager.localWebDriver.manage().window().maximize();
         System.out.println("SetUp successfully executed");
+        RestAssured.baseURI = "https://jsonplaceholder.typicode.com/";
         // Timeout
 
         /** Java
