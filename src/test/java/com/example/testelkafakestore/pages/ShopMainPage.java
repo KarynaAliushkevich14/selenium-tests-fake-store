@@ -15,12 +15,13 @@ public class ShopMainPage extends BasePage {
     private final CategoriesPage categoriesPage;
     private final AboutUsPage aboutUsPage;
     private final BlogPage blogPage;
+    private final ShoppingCartPage shoppingCartPage;
 
     private final String uri = "";
 
     @Autowired
     public ShopMainPage(DriverManager driverManager, BrowserActions browserActions, MostWantedPage mostWantedPage,
-                        CategoriesPage categoriesPage, AboutUsPage aboutUsPage, BlogPage blogPage) {
+                        CategoriesPage categoriesPage, AboutUsPage aboutUsPage, BlogPage blogPage, ShoppingCartPage shoppingCartPage) {
         super(driverManager, browserActions);
         this.driverManager = driverManager;
         this.browserActions = browserActions;
@@ -29,6 +30,7 @@ public class ShopMainPage extends BasePage {
         this.categoriesPage = categoriesPage;
         this.aboutUsPage = aboutUsPage;
         this.blogPage = blogPage;
+        this.shoppingCartPage = shoppingCartPage;
     }
 
     public ShopMainPage goToCurrentPage() {
@@ -54,5 +56,10 @@ public class ShopMainPage extends BasePage {
     public BlogPage goToBlogPage() {
         navigateToPageUrl(blogPage.uri);
         return blogPage;
+    }
+
+    public ShoppingCartPage goToShoppingCartPage() {
+        navigateToPageUrl(shoppingCartPage.uri);
+        return shoppingCartPage;
     }
 }

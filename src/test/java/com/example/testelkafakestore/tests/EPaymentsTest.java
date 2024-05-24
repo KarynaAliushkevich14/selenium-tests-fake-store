@@ -20,22 +20,36 @@ public class EPaymentsTest extends BaseTest {
     }
 
     @Test
-    public void selectProductAndPayForIt_success() {
+    public void selectProductsAndPayForIt_success() {
         // arrange
+        // often in arrange part we pull out some database entities
 
         // act & assert
-        shopMainPage
+        // add product from JeansCategory
+        var jeansCategoryPage = shopMainPage
                 .goToCurrentPage()
                 .goToCategoriesPage()
-                .goToJeansCategoryPage()
-                .addProductWithPositivePriceToCart();
+                .goToJeansCategoryPage();
 
+                jeansCategoryPage.addProductWithPositivePriceToCart();
+
+        // add product from MostWantedPage
         var mostWantedPage = shopMainPage.goToMostWantedPage();
-
         Assert.assertEquals(mostWantedPage.getNumberOfTotalProductsExpected, mostWantedPage.getNumberOfTotalProductsActual());
         Assert.assertEquals(mostWantedPage.getNumberOfTotalProductsExpected, mostWantedPage.getShowingAllResultField());
 
+        shopMainPage
+                .goToMostWantedPage()
+                .addProductWithPositivePriceToCart();
+
+        // pay for products
+        var shoppingCartPage=  shopMainPage.goToShoppingCartPage();
+        Double summaryPriceFromProductCategories = jeansCategoryPage.priceOfChosenProduct + mostWantedPage.priceOfChosenProduct;
+        Double summaryPriceFromShoppingCart = shoppingCartPage.summaryPriceOfAllProductsInCart();
+
+        Assert.assertEquals(summaryPriceFromShoppingCart, summaryPriceFromProductCategories);
+
         // assert
-        // that item price == shopping cart price for each product and sum
+        // often in assert part we check status of database entities
     }
 }

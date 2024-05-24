@@ -21,6 +21,7 @@ public class JeansCategoryPage extends BasePage {
     private final BrowserActions browserActions;
     private final PageElements pageElements;
 
+    public Double priceOfChosenProduct = 0.00;
     public final String uri = "product-category/jeans/";
 
     @Autowired
@@ -46,6 +47,7 @@ public class JeansCategoryPage extends BasePage {
 
                 if (price > 0) {
                     WebElement addToCartElement = item.findElement(By.xpath(".//a[contains(@class, 'add_to_cart_button')]"));
+                    priceOfChosenProduct = price;
                     addToCartElement.click();
                     browserActions.refreshPage();
                     break;

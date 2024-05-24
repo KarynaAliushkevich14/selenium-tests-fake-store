@@ -4,6 +4,7 @@ import com.example.testelkafakestore.domain.BrowserActions;
 import com.example.testelkafakestore.domain.DriverManager;
 import com.example.testelkafakestore.domain.BasePage;
 import com.example.testelkafakestore.serviceHelper.ServiceHelper;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Component
 public class MostWantedPage extends BasePage {
@@ -20,8 +22,10 @@ public class MostWantedPage extends BasePage {
     private final BrowserActions browserActions;
     private final PageElements pageElements;
 
-    public final String uri = "/product-category/most-wanted/";
+    public Double priceOfChosenProduct = 0.00;
     public final Integer getNumberOfTotalProductsExpected = 3;
+    public final String uri = "/product-category/most-wanted/";
+
 
     @Autowired
     protected MostWantedPage(DriverManager driverManager, BrowserActions browserActions) {
@@ -34,8 +38,30 @@ public class MostWantedPage extends BasePage {
         Init();
     }
 
+
     protected void Init() {
         PageFactory.initElements(driverManager.localWebDriver, pageElements);
+    }
+
+
+    public MostWantedPage addProductWithPositivePriceToCart() {
+        for (WebElement item : pageElements.listOfAllProducts) {
+            try {
+                WebElement priceElement = item.findElement(By.xpath(".//span[contains(@class, 'Price-amount')]")); // search for the 'price' element inside of current element
+                Double price = ServiceHelper.parseStringToDouble(priceElement.getText());
+
+                if (price > 0) {
+                    WebElement addToCartElement = item.findElement(By.xpath(".//a[contains(@class, 'add_to_cart_button')]"));
+                    priceOfChosenProduct = price;
+                    addToCartElement.click();
+                    browserActions.refreshPage();
+                    break;
+                }
+            } catch (NoSuchElementException noSuchElementException) {
+                noSuchElementException.getMessage();
+            }
+        }
+        return this;
     }
 
 
@@ -45,6 +71,7 @@ public class MostWantedPage extends BasePage {
     public Integer getShowingAllResultField() {
         return ServiceHelper.parseStringToInteger(pageElements.showingAllResultsField.getText());
     }
+
 
     protected class PageElements {
 
