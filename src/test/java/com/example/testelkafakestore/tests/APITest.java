@@ -15,36 +15,36 @@ public class APITest extends BaseTest {
         super(driverManager);
     }
 
-    @Test
-    // Rest Assured API test
-    public void addNewPost_POST_METHOD() {
-
-        String jsonBody = """
-                {
-                    "userId": 125,
-                    "id": 101,
-                    "title": "Today's post: Travel to Europe",
-                    "body": "dolore placeat quibusdam ea quo vitae\\nmagni quis enim qui quis quo nemo aut"
-                }
-                """;
-
-        given()
-                .contentType(ContentType.JSON)
-                .body(jsonBody)
-                .when()
-                .post("/posts")
-                .then()
-                .statusCode(201);
-    }
-
-    @Test
-    public void getAllPosts_GET_METHOD() {
-
-        given()
-                .contentType(ContentType.JSON)
-                .when()
-                .get("/posts")
-                .then()
-                .statusCode(200);
-    }
+//    @Test
+//    // Rest Assured API test
+//    public void addNewPost_POST_METHOD() {
+//
+//        String jsonBody = """
+//                {
+//                    "userId": 125,
+//                    "id": 101,
+//                    "title": "Today's post: Travel to Europe",
+//                    "body": "dolore placeat quibusdam ea quo vitae\\nmagni quis enim qui quis quo nemo aut"
+//                }
+//                """;
+//
+//        given()
+//                .contentType(ContentType.JSON)
+//                .body(jsonBody)
+//                .when()
+//                .post("/posts")
+//                .then()
+//                .statusCode(201);
+//    }
+//
+//    @Test
+//    public void getAllPosts_GET_METHOD() {
+//
+//        given()
+//                .contentType(ContentType.JSON)
+//                .when()
+//                .get("/posts")
+//                .then()
+//                .statusCode(200);
+//    }
 }

@@ -3,6 +3,9 @@ package com.example.testelkafakestore.domain;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.*;
 
@@ -19,6 +22,11 @@ public abstract class BaseTest {
 
     @BeforeEach
     public void setUp() {
+        WebDriver webDriver = driverManager.localWebDriver;
+        if (webDriver == null) {
+            throw new IllegalStateException("WebDriver is not initialized.");
+        }
+
 
         driverManager.localWebDriver.manage().window().maximize();
         System.out.println("SetUp successfully executed");

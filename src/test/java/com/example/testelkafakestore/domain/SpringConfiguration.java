@@ -3,6 +3,7 @@ package com.example.testelkafakestore.domain;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -25,8 +26,11 @@ public class SpringConfiguration {
     public WebDriver localWebDriver (){
         System.out.println("Browser type: ");
         if (environment.getProperty("browser").equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver","src\\test\\java\\com\\example\\testelkafakestore\\driversExe\\chromedriver-win64\\chromedriver.exe");
-            return new ChromeDriver();
+            System.setProperty("webdriver.chrome.driver", "src\\test\\java\\com\\example\\testelkafakestore\\driversExe\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+
+            ChromeOptions options = new ChromeOptions();
+            options.setBinary("C:\\Users\\karina\\Desktop\\Programming\\Drivers\\chrome-win64\\chrome-win64\\chrome.exe");
+            return new ChromeDriver(options);
         } if (environment.getProperty("browser").equalsIgnoreCase("firefox")) {
            System.setProperty("webdriver.chrome.driver","src/test/resources/driversExe/geckodriver-v0.34.0-win-aarch64/geckodriver.exe");
            return new FirefoxDriver();

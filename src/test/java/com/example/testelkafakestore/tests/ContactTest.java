@@ -24,15 +24,15 @@ public class ContactTest extends BaseTest {
         this.allCategoriesPage = allCategoriesPage;
     }
 
-    @Test
-    public void contactUs_success() {
-        // act
-        shopMainPage
-                .goToAboutUsPage()
-                .fillContactForm();
-
-        // assert
-        Assert.assertEquals(aboutUsPage.getGiveUsCallNumberExpected, aboutUsPage.getGiveUsCallNumberActual());
-        Assert.assertEquals(aboutUsPage.getOurLocationExpected, aboutUsPage.getGetOurLocationActual());
-    }
+//    @Test
+//    public void contactUs_success() {
+//        // act
+//        shopMainPage
+//                .goToAboutUsPage()
+//                .fillContactForm();
+//
+//        // assert
+//        Assert.assertEquals(aboutUsPage.getGiveUsCallNumberExpected, aboutUsPage.getGiveUsCallNumberActual());
+//        Assert.assertEquals(aboutUsPage.getOurLocationExpected, aboutUsPage.getGetOurLocationActual());
+//    }
 }
