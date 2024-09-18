@@ -25,6 +25,7 @@ public abstract class BaseTest {
         RestAssured.baseURI = "https://jsonplaceholder.typicode.com/";
         // Timeout
 
+
         /** Java
          * 1. Application context: registration of Beans and placement in container
          * 2. BaseTest: SetUp, TearDown
