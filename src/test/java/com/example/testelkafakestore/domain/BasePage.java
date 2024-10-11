@@ -1,16 +1,15 @@
 package com.example.testelkafakestore.domain;
 
+import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class BasePage {
 
-    private final DriverManager driverManager;
     private final BrowserActions browserActions;
 
     protected String uri;
 
-
-    protected BasePage(DriverManager driverManager, BrowserActions browserActions) {
-        this.driverManager = driverManager;
+    @Autowired
+    protected BasePage(BrowserActions browserActions) {
         this.browserActions = browserActions;
     }
 

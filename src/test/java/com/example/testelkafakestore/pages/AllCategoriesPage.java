@@ -1,7 +1,7 @@
 package com.example.testelkafakestore.pages;
 
 import com.example.testelkafakestore.domain.BrowserActions;
-import com.example.testelkafakestore.domain.DriverManager;
+import com.example.testelkafakestore.domain.Driver;
 import com.example.testelkafakestore.domain.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -10,23 +10,23 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @Component
+@Lazy
 public class AllCategoriesPage extends BasePage {
-    private final DriverManager driverManager;
     private final BrowserActions browserActions;
     private final PageElements pageElements;
 
     public final String uri = "shop/";
 
     @Autowired
-    protected AllCategoriesPage(DriverManager driverManager, BrowserActions browserActions) {
-        super(driverManager, browserActions);
+    protected AllCategoriesPage(BrowserActions browserActions) {
+        super(browserActions);
 
-        this.driverManager = driverManager;
         this.browserActions = browserActions;
         this.pageElements = new PageElements();
 
@@ -34,7 +34,7 @@ public class AllCategoriesPage extends BasePage {
     }
 
     protected void Init() {
-        PageFactory.initElements(driverManager.localWebDriver, pageElements);
+        PageFactory.initElements(Driver.webDriverInstance, pageElements);
     }
 
     public AllCategoriesPage sortItemsByPopularity () {

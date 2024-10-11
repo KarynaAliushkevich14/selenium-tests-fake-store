@@ -3,36 +3,29 @@ package com.example.testelkafakestore.domain;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.*;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
 @SpringBootTest
 public abstract class BaseTest {
 
-    private final DriverManager driverManager;
-
-    @Autowired
-    public BaseTest(DriverManager driverManager) {
-        this.driverManager = driverManager;
-    }
+    protected Driver driverInstance;
 
     @BeforeEach
     public void setUp() {
-        WebDriver webDriver = driverManager.localWebDriver;
-        if (webDriver == null) {
-            throw new IllegalStateException("WebDriver is not initialized.");
-        }
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        context.registerBean(Driver.class);
+        context.refresh();
+
+        driverInstance = context.getBean(Driver.class);
+        driverInstance.Initialize();
 
 
-        driverManager.localWebDriver.manage().window().maximize();
+        Driver.webDriverInstance.manage().window().maximize();
         System.out.println("SetUp successfully executed");
-        RestAssured.baseURI = "https://jsonplaceholder.typicode.com/";
-        // Timeout
 
+        RestAssured.baseURI = "https://jsonplaceholder.typicode.com/";
 
         /** Java
          * 1. Application context: registration of Beans and placement in container
@@ -53,6 +46,6 @@ public abstract class BaseTest {
 
     @AfterEach
     public void tearDown() {
-        driverManager.localWebDriver.quit();
+        Driver.webDriverInstance.quit();
     }
 }

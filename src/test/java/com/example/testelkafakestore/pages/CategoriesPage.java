@@ -1,22 +1,22 @@
 package com.example.testelkafakestore.pages;
 
 import com.example.testelkafakestore.domain.BrowserActions;
-import com.example.testelkafakestore.domain.DriverManager;
+import com.example.testelkafakestore.domain.Driver;
 import com.example.testelkafakestore.domain.BasePage;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
+@Lazy
 public class CategoriesPage extends BasePage {
 
-    private final DriverManager driverManager;
     private final BrowserActions browserActions;
     private final AllCategoriesPage allCategoriesPage;
     private final JeansCategoryPage jeansCategoryPage;
@@ -28,11 +28,10 @@ public class CategoriesPage extends BasePage {
     public final String uri = "";
 
     @Autowired
-    public CategoriesPage(DriverManager driverManager, BrowserActions browserActions, WebDriver localWebDriver,
+    public CategoriesPage(BrowserActions browserActions,
                           AllCategoriesPage allCategoriesPage, JeansCategoryPage jeansCategoryPage, ShirtsCategoryPage shirtsCategoryPage,
                           ScarfsCategoryPage scarfsCategoryPage, TrendsCategoryPage trendsCategoryPage) {
-        super(driverManager, browserActions);
-        this.driverManager = driverManager;
+        super(browserActions);
         this.browserActions = browserActions;
 
         this.allCategoriesPage = allCategoriesPage;
@@ -46,7 +45,7 @@ public class CategoriesPage extends BasePage {
     }
 
     protected void Init() {
-        PageFactory.initElements(driverManager.localWebDriver, pageElements);
+        PageFactory.initElements(Driver.webDriverInstance, pageElements);
     }
 
     public AllCategoriesPage goToAllCategoriesPage() {

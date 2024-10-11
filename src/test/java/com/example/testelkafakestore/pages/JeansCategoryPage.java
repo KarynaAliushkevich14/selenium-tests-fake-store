@@ -1,7 +1,7 @@
 package com.example.testelkafakestore.pages;
 
 import com.example.testelkafakestore.domain.BrowserActions;
-import com.example.testelkafakestore.domain.DriverManager;
+import com.example.testelkafakestore.domain.Driver;
 import com.example.testelkafakestore.domain.BasePage;
 import com.example.testelkafakestore.serviceHelper.ServiceHelper;
 import org.openqa.selenium.By;
@@ -10,14 +10,15 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @Component
+@Lazy
 public class JeansCategoryPage extends BasePage {
-    private final DriverManager driverManager;
     private final BrowserActions browserActions;
     private final PageElements pageElements;
 
@@ -25,10 +26,9 @@ public class JeansCategoryPage extends BasePage {
     public final String uri = "product-category/jeans/";
 
     @Autowired
-    protected JeansCategoryPage(DriverManager driverManager, BrowserActions browserActions) {
-        super(driverManager, browserActions);
+    protected JeansCategoryPage( BrowserActions browserActions) {
+        super(browserActions);
 
-        this.driverManager = driverManager;
         this.browserActions = browserActions;
         this.pageElements = new PageElements();
 
@@ -36,7 +36,7 @@ public class JeansCategoryPage extends BasePage {
     }
 
     protected void Init() {
-        PageFactory.initElements(driverManager.localWebDriver, pageElements);
+        PageFactory.initElements(Driver.webDriverInstance, pageElements);
     }
 
     public JeansCategoryPage addProductWithPositivePriceToCart() {

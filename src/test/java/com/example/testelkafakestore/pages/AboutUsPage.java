@@ -1,7 +1,7 @@
 package com.example.testelkafakestore.pages;
 
 import com.example.testelkafakestore.domain.BrowserActions;
-import com.example.testelkafakestore.domain.DriverManager;
+import com.example.testelkafakestore.domain.Driver;
 import com.example.testelkafakestore.domain.BasePage;
 import com.example.testelkafakestore.serviceHelper.WebElementExtension;
 import org.openqa.selenium.WebElement;
@@ -9,11 +9,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
+@Lazy
 public class AboutUsPage extends BasePage {
-    private final DriverManager driverManager;
     private final BrowserActions browserActions;
     private final PageElements pageElements;
 
@@ -22,10 +23,9 @@ public class AboutUsPage extends BasePage {
     public final String getOurLocationExpected = "Legnicka 12";
 
     @Autowired
-    protected AboutUsPage(DriverManager driverManager, BrowserActions browserActions) {
-        super(driverManager, browserActions);
+    protected AboutUsPage( BrowserActions browserActions) {
+        super(browserActions);
 
-        this.driverManager = driverManager;
         this.browserActions = browserActions;
         this.pageElements = new PageElements();
 
@@ -33,7 +33,7 @@ public class AboutUsPage extends BasePage {
     }
 
     protected void Init () {
-        PageFactory.initElements(driverManager.localWebDriver, pageElements);
+        PageFactory.initElements(Driver.webDriverInstance, pageElements);
     }
 
     public AboutUsPage fillContactForm() {
@@ -55,11 +55,11 @@ public class AboutUsPage extends BasePage {
     }
 
     private void waitUntilAllWebElementsToBeClickable() {
-        WebElementExtension.waitForElementToBeClickable(driverManager, pageElements.yourName);
-        WebElementExtension.waitForElementToBeClickable(driverManager, pageElements.yourEmail);
-        WebElementExtension.waitForElementToBeClickable(driverManager, pageElements.subject);
-        WebElementExtension.waitForElementToBeClickable(driverManager, pageElements.yourMessage);
-        WebElementExtension.waitForElementToBeClickable(driverManager, pageElements.sendButton);
+        WebElementExtension.waitForElementToBeClickable(Driver.webDriverWait, pageElements.yourName);
+        WebElementExtension.waitForElementToBeClickable(Driver.webDriverWait, pageElements.yourEmail);
+        WebElementExtension.waitForElementToBeClickable(Driver.webDriverWait, pageElements.subject);
+        WebElementExtension.waitForElementToBeClickable(Driver.webDriverWait, pageElements.yourMessage);
+        WebElementExtension.waitForElementToBeClickable(Driver.webDriverWait, pageElements.sendButton);
     }
 
     protected class PageElements {

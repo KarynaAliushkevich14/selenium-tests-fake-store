@@ -1,16 +1,17 @@
 package com.example.testelkafakestore.pages;
 
 import com.example.testelkafakestore.domain.BrowserActions;
-import com.example.testelkafakestore.domain.DriverManager;
 import com.example.testelkafakestore.domain.BasePage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
+@Lazy
 public class ShopMainPage extends BasePage {
 
-    private final DriverManager driverManager;
     private final BrowserActions browserActions;
+
     private final MostWantedPage mostWantedPage;
     private final CategoriesPage categoriesPage;
     private final AboutUsPage aboutUsPage;
@@ -20,10 +21,9 @@ public class ShopMainPage extends BasePage {
     private final String uri = "";
 
     @Autowired
-    public ShopMainPage(DriverManager driverManager, BrowserActions browserActions, MostWantedPage mostWantedPage,
+    public ShopMainPage(BrowserActions browserActions, MostWantedPage mostWantedPage,
                         CategoriesPage categoriesPage, AboutUsPage aboutUsPage, BlogPage blogPage, ShoppingCartPage shoppingCartPage) {
-        super(driverManager, browserActions);
-        this.driverManager = driverManager;
+        super(browserActions);
         this.browserActions = browserActions;
 
         this.mostWantedPage = mostWantedPage;
