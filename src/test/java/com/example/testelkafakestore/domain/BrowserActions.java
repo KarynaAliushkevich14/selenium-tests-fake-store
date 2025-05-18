@@ -3,11 +3,10 @@ package com.example.testelkafakestore.domain;
 import com.example.testelkafakestore.enums.Constants;
 import org.openqa.selenium.JavascriptExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
-@Lazy
+
 public class BrowserActions {
 
     private final String baseUrl;

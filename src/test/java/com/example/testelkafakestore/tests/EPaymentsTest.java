@@ -26,28 +26,28 @@ public class EPaymentsTest extends BaseTest {
         // act & assert
         // add product from JeansCategory
         var jeansCategoryPage = shopMainPage
-                .goToCurrentPage();
-//                .goToCategoriesPage()
-//                .goToJeansCategoryPage();
-//
-//                jeansCategoryPage.addProductWithPositivePriceToCart();
-//
-//        // add product from MostWantedPage
-//        var mostWantedPage = shopMainPage.goToMostWantedPage();
-//        Assert.assertEquals(mostWantedPage.getNumberOfTotalProductsExpected, mostWantedPage.getNumberOfTotalProductsActual());
-//        Assert.assertEquals(mostWantedPage.getNumberOfTotalProductsExpected, mostWantedPage.getShowingAllResultField());
-//
-//
-//        shopMainPage
-//                .goToMostWantedPage()
-//                .addProductWithPositivePriceToCart();
-//
-//        // pay for products
-//        var shoppingCartPage=  shopMainPage.goToShoppingCartPage();
-//        Double summaryPriceFromProductCategories = jeansCategoryPage.priceOfChosenProduct + mostWantedPage.priceOfChosenProduct;
-//        Double summaryPriceFromShoppingCart = shoppingCartPage.summaryPriceOfAllProductsInCart();
-//
-//        Assert.assertEquals(summaryPriceFromShoppingCart, summaryPriceFromProductCategories);
+                .goToCurrentPage()
+                .goToCategoriesPage()
+                .goToJeansCategoryPage();
+
+                jeansCategoryPage.addProductWithPositivePriceToCart();
+
+        // add product from MostWantedPage
+        var mostWantedPage = shopMainPage.goToMostWantedPage();
+        Assert.assertEquals(mostWantedPage.getNumberOfTotalProductsExpected, mostWantedPage.getNumberOfTotalProductsActual());
+        Assert.assertEquals(mostWantedPage.getNumberOfTotalProductsExpected, mostWantedPage.getShowingAllResultField());
+
+
+        shopMainPage
+                .goToMostWantedPage()
+                .addProductWithPositivePriceToCart();
+
+        // pay for products
+        var shoppingCartPage=  shopMainPage.goToShoppingCartPage();
+        Double summaryPriceFromProductCategories = jeansCategoryPage.priceOfChosenProduct + mostWantedPage.priceOfChosenProduct;
+        Double summaryPriceFromShoppingCart = shoppingCartPage.summaryPriceOfAllProductsInCart();
+
+        Assert.assertEquals(summaryPriceFromShoppingCart, summaryPriceFromProductCategories);
 
         // assert
         // often in assert part we check status of database entities

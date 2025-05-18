@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
-@Lazy
 public class AboutUsPage extends BasePage {
     private final BrowserActions browserActions;
     private final PageElements pageElements;
@@ -23,7 +22,7 @@ public class AboutUsPage extends BasePage {
     public final String getOurLocationExpected = "Legnicka 12";
 
     @Autowired
-    protected AboutUsPage( BrowserActions browserActions) {
+    protected AboutUsPage(BrowserActions browserActions) {
         super(browserActions);
 
         this.browserActions = browserActions;
