@@ -2,6 +2,7 @@ package com.example.testelkafakestore.tests;
 
 import com.example.testelkafakestore.domain.BaseTest;
 import com.example.testelkafakestore.pages.ShopMainPage;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
@@ -18,6 +19,7 @@ public class EPaymentsTest extends BaseTest {
         this.shopMainPage = shopMainPage;
     }
 
+    @Tag("Regression")
     @Test
     public void selectProductsAndPayForIt_success() {
         // arrange
@@ -34,6 +36,7 @@ public class EPaymentsTest extends BaseTest {
 
         // add product from MostWantedPage
         var mostWantedPage = shopMainPage.goToMostWantedPage();
+
         Assert.assertEquals(mostWantedPage.getNumberOfTotalProductsExpected, mostWantedPage.getNumberOfTotalProductsActual());
         Assert.assertEquals(mostWantedPage.getNumberOfTotalProductsExpected, mostWantedPage.getShowingAllResultField());
 

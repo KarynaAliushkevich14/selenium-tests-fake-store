@@ -59,7 +59,7 @@ public class JeansCategoryPage extends BasePage {
         return this;
     }
 
-    // Page Object Pattern
+    // Page Factory
     protected class PageElements {
 
         @FindBy(how = How.XPATH, using = "//li[contains (@class, 'product_cat-jeans')]")

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-
 public class ShopMainPage extends BasePage {
 
     private final BrowserActions browserActions;

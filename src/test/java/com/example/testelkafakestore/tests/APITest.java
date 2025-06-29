@@ -2,14 +2,15 @@ package com.example.testelkafakestore.tests;
 
 import com.example.testelkafakestore.domain.BaseTest;
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
 public class APITest extends BaseTest {
 
+    @Tag("Regression")
     @Test
-    // Rest Assured API test
     public void addNewPost_POST_METHOD() {
 
         String jsonBody = """
