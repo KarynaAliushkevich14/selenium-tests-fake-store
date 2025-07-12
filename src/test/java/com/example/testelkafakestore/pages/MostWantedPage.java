@@ -35,14 +35,12 @@ public class MostWantedPage extends BasePage {
         this.browserActions = browserActions;
         this.pageElements = new PageElements();
 
-        Init();
     }
 
-
-    protected void Init() {
+    @Override
+    public void init() {
         PageFactory.initElements(Driver.webDriverInstance, pageElements);
     }
-
 
     public MostWantedPage addProductWithPositivePriceToCart() {
         for (WebElement item : pageElements.listOfAllProducts) {

@@ -2,6 +2,8 @@ package com.example.testelkafakestore.pages;
 
 import com.example.testelkafakestore.domain.BrowserActions;
 import com.example.testelkafakestore.domain.BasePage;
+import com.example.testelkafakestore.domain.Driver;
+import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,6 +31,11 @@ public class ShopMainPage extends BasePage {
         this.aboutUsPage = aboutUsPage;
         this.blogPage = blogPage;
         this.shoppingCartPage = shoppingCartPage;
+    }
+
+    @Override
+    public void init() {
+        PageFactory.initElements(Driver.webDriverInstance, this);
     }
 
     public ShopMainPage goToCurrentPage() {

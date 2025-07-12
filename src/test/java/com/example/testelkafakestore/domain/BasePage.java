@@ -13,6 +13,8 @@ public abstract class BasePage {
         this.browserActions = browserActions;
     }
 
+    public abstract void init();
+
     protected void navigateToPageUrl(String uri) {
         browserActions.goToUrl(uri);
     }

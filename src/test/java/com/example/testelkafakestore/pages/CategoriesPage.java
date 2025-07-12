@@ -41,10 +41,10 @@ public class CategoriesPage extends BasePage {
         this.trendsCategoryPage = trendsCategoryPage;
         this.pageElements = new PageElements();
 
-        Init();
     }
 
-    protected void Init() {
+    @Override
+    public void init() {
         PageFactory.initElements(Driver.webDriverInstance, pageElements);
     }
 

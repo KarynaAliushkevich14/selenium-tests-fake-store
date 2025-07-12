@@ -30,11 +30,6 @@ public class AllCategoriesPage extends BasePage {
         this.browserActions = browserActions;
         this.pageElements = new PageElements();
 
-        Init();
-    }
-
-    protected void Init() {
-        PageFactory.initElements(Driver.webDriverInstance, pageElements);
     }
 
     public AllCategoriesPage sortItemsByPopularity () {
@@ -52,6 +47,11 @@ public class AllCategoriesPage extends BasePage {
             ex.printStackTrace();
         }
         return this;
+    }
+
+    @Override
+    public void init() {
+        PageFactory.initElements(Driver.webDriverInstance, pageElements);
     }
 
     protected class PageElements{

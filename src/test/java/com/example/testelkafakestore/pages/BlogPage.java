@@ -28,10 +28,10 @@ public class BlogPage extends BasePage {
         this.browserActions = browserActions;
         this.pageElements = new PageElements();
 
-        Init();
     }
 
-    protected void Init() {
+    @Override
+    public void init() {
         PageFactory.initElements(Driver.webDriverInstance, pageElements);
     }
 

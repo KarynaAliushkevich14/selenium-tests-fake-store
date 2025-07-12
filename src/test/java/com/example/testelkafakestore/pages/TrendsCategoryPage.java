@@ -29,8 +29,6 @@ public class TrendsCategoryPage extends BasePage {
 
         this.browserActions = browserActions;
         this.pageElements = new PageElements();
-
-        Init();
     }
 
     public Integer getNumberOfTotalProductsActual() {
@@ -40,7 +38,8 @@ public class TrendsCategoryPage extends BasePage {
         return ServiceHelper.parseStringToInteger(pageElements.showingAllResultsField.getText());
     }
 
-    protected void Init() {
+    @Override
+    public void init() {
         PageFactory.initElements(Driver.webDriverInstance, pageElements);
     }
 

@@ -1,18 +1,18 @@
 package com.example.testelkafakestore.domain;
 
-import com.example.testelkafakestore.enums.Constants;
 import org.openqa.selenium.JavascriptExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class BrowserActions {
 
-    private final String baseUrl;
+    @Value("${test.base-url}")
+    private String baseUrl;
 
     @Autowired
     public BrowserActions() {
-        this.baseUrl = Constants.BASE_URL;
     }
 
     public BrowserActions goToUrl(String uri) {

@@ -14,7 +14,7 @@ import org.springframework.core.env.Environment;
 import java.time.Duration;
 
 @Configuration
-@PropertySource({"classpath:application-test.properties"})
+@PropertySource({"classpath:application-fakestore.properties"})
 @ComponentScan(basePackages = "java")
 
 public class SpringConfiguration {

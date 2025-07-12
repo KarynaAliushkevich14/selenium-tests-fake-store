@@ -50,22 +50,12 @@ public class EPaymentsTest extends BaseTest {
         Double summaryPriceFromProductCategories = jeansCategoryPage.priceOfChosenProduct + mostWantedPage.priceOfChosenProduct;
         Double summaryPriceFromShoppingCart = shoppingCartPage.summaryPriceOfAllProductsInCart();
 
-        Assert.assertEquals(summaryPriceFromShoppingCart, summaryPriceFromProductCategories);
-
         // assert
-        // often in assert part we check status of database entities
+        Assert.assertEquals(summaryPriceFromShoppingCart, summaryPriceFromProductCategories);
     }
 
     @Test
-    public void selectProductsAndPayForIt_successt() {
-        // arrange
-        // often in arrange part we pull out some database entities
+    public void test () {
 
-        // act & assert
-        // add product from JeansCategory
-        var jeansCategoryPage = shopMainPage
-                .goToCurrentPage()
-                .goToCategoriesPage();
     }
-
 }
