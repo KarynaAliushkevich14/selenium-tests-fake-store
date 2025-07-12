@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
+@Lazy
 public class AboutUsPage extends BasePage {
     private final BrowserActions browserActions;
     private final PageElements pageElements;

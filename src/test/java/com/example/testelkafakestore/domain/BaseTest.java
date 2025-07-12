@@ -2,11 +2,9 @@ package com.example.testelkafakestore.domain;
 
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.*;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
 

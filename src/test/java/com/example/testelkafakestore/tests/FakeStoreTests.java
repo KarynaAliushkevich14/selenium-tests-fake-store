@@ -1,7 +1,6 @@
 package com.example.testelkafakestore.tests;
 
 import com.example.testelkafakestore.domain.BaseTest;
-import com.example.testelkafakestore.enums.CategoryProductEnum;
 import com.example.testelkafakestore.pages.SklepPage;
 import com.example.testelkafakestore.pages.SomeTestPage;
 import org.junit.jupiter.api.Test;
